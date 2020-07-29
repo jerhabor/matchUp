@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap');
+
+/* ----------------------------------------------------------------- Navigation Bar */
+
+.navbar {
+  background: none;
+}
+
+/* ----------------------------------------------------------------- General Document */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100vh;
+}
+
+body {
+    font-family: 'Bungee Inline', cursive;
+    overflow: hidden;
+    background: radial-gradient(#00aaff,#0f0e45);
+}
+
+/* ----------------------------------------------------------------- Visible Cards Board */
+
+#visible-board {
+    text-align: center;
+    box-sizing: border-box;
+    width: 800px;
+    height: 140px;
+    padding: 10px;
+    margin: 0px auto;
+}
+
+#visible-board > div {
+    border: #000 1px solid;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    margin: 0px 6px;
+}
+
+/* ----------------------------------------------------------------- Memory Cards Board */
+
+#memory-board {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 15px;
+    margin: 0px auto;
+    justify-content: center;
+}
+
+.card {
+    position: relative;
+    height: 120px;
+    width: 90px;
+    overflow: hidden;
+    border: #000 1px solid;
+    cursor: pointer;
+}
+.card-front {
+    transform: rotateX(180deg);
+}
+
+.card-back {
+    background-color: #000;
+}
+
+.card-back > img {
+    position: absolute;
+    display: flex;
+    width: auto;
+    height: 100%;
+    justify-content: center;
+    transform: translateX(-15px);
+    transition: transform .2s ease-in-out;
+}
+
+.card-back > img:hover {
+    transform: scale(1.2) translateX(-13px);
+}
