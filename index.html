@@ -4,28 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link id="stylesheet" rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>  
-    <script type="text/javascript" src="assets/script.js"></script>
     <title>MATCHUP</title>
 </head>
 <body>
     <nav class="navbar">
         <a class="navbar-brand" href="#">MATCHUP</a>
+        <input type="checkbox" class="theme-toggle" id="theme-toggle">
+        <label class="label" for="theme-toggle">
+		    <div class="switch"></div>
+	</label>
     </nav>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-6 game-info">
-                <p>Lives <span id="lives-remaining">3</span></p>
+        <div class="row game-info-container">
+            <div class="col-4 level-container">
+                <p>Level: <span id="level">1</span></p>
             </div>
-            <div class="col-6 game-info">
-                <p>Level <span id="level">1</span></p>
+            <div class="offset-1 col-6 lives-container">
+                <p>Lives: <span id="lives-remaining">3</span></p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-6" id="left-container">
+        <div class="row game-container">
+            <div class="col-4" id="left-container">
                 <div class="col-12" id="timer">
                 </div>
                 <div class="col-12" id="left-deck">
@@ -58,17 +61,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6" id="right-deck"> 
-                <div class="right-card ui-widget-content">
+            <div class="offset-1 col-5" id="right-deck"> 
+                <div class="right-card">
                     <div class="card-front"></div>
-                    <div class="card-back">
-                    </div>
+                    <div class="card-back"></div>
                 </div> 
-                <div class="right-card ui-widget-content">
-                    <div class="card-front"></div>
-                    <div class="card-back">
-                    </div>
-                </div>  
                 <div class="right-card">
                     <div class="card-front"></div>
                     <div class="card-back"></div>
@@ -76,7 +73,11 @@
                 <div class="right-card">
                     <div class="card-front"></div>
                     <div class="card-back"></div>
-                </div>  
+                </div>
+                <div class="right-card">
+                    <div class="card-front"></div>
+                    <div class="card-back"></div>
+                </div> 
                 <div class="right-card">
                     <div class="card-front"></div>
                     <div class="card-back"></div>
@@ -84,11 +85,23 @@
                 <div class="right-card">
                     <div class="card-front"></div>
                     <div class="card-back"></div>
-                </div>  
+                </div>
+                <div class="right-card">
+                    <div class="card-front"></div>
+                    <div class="card-back"></div>
+                </div> 
                 <div class="right-card">
                     <div class="card-front"></div>
                     <div class="card-back"></div>
                 </div>  
+                <div class="right-card">
+                    <div class="card-front"></div>
+                    <div class="card-back"></div>
+                </div>
+                <div class="right-card">
+                    <div class="card-front"></div>
+                    <div class="card-back"></div>
+                </div> 
                 <div class="right-card">
                     <div class="card-front"></div>
                     <div class="card-back"></div>
@@ -100,6 +113,7 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="assets/js/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
