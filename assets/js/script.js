@@ -1,35 +1,40 @@
 $(document).ready(function() {
+    var lives = 3;
+    var livesRemaining = $('#lives-remaining');
+    
     var game = {
         leftDeck: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
         rightDeck: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
         selectedLeftCard: [],
         selectedRightCard: [],
         init: function() {
-            game.shuffleLeft()
+            game.shuffleLeft();
             game.shuffleRight();
         },
 
         shuffleLeft: function() { // Shuffles the left deck of cards
         var random = 0;
         var temp = 0;
-        for (j = 1; j < game.leftDeck.length; j++) { // Need to check that this shuffle method is ok!!!
+        var j = 1;
+        for (j; j < game.leftDeck.length; j++) { // Need to check that this shuffle method is ok!!!
             random = Math.round(Math.random() * j);
             temp = game.leftDeck[j];
             game.leftDeck[j] = game.leftDeck[random];
             game.leftDeck[random] = temp;
-            };
+            }
         console.log('Shuffled Left Deck Array: ' + game.leftDeck);
         },
 
         shuffleRight: function() { // Shuffles the right deck of cards
         var random = 0;
         var temp = 0;
-        for (i = 1; i < game.rightDeck.length; i++) {  // Need to check that this shuffle method is ok!!!
+        var i = 1;
+        for (i; i < game.rightDeck.length; i++) {  // Need to check that this shuffle method is ok!!!
             random = Math.round(Math.random() * i);
             temp = game.rightDeck[i];
             game.rightDeck[i] = game.rightDeck[random];
             game.rightDeck[random] = temp;
-            };
+            }
         game.assignRightDeck();
         console.log('Shuffled Right Deck Array: ' + game.rightDeck);
         },
@@ -41,7 +46,7 @@ $(document).ready(function() {
 
             $('.left-card').each(function(index) {
             $(this).attr('data-card-value', game.leftDeck[index]);
-            $(this).children('.card-front').html('<p>' + $(this).data('cardValue') + '</p>')
+            $(this).children('.card-front').html('<p>' + $(this).data('cardValue') + '</p>');
             });
             
             game.clickHandlers();
@@ -70,7 +75,7 @@ $(document).ready(function() {
                     game.selectedLeftCard = [];
                     game.selectedLeftCard.push($(this).data('cardValue'));
                     console.log(game.selectedLeftCard);
-                };
+                }
             });
 
             $('.right-card').on('click', function() { // Adds a '.selected' class to the element to cards on the right deck
@@ -81,7 +86,7 @@ $(document).ready(function() {
                 if (game.selectedRightCard.length > 0) {
                     alert('You can only pick one!'); // Alerts user that only one card on the right can be clicked!
                     game.selectedRightCard = [];
-                    $('.right-card').removeClass('flip') // Turns all cards on the right deck to the back if more than one is clicked
+                    $('.right-card').removeClass('flip'); // Turns all cards on the right deck to the back if more than one is clicked
                     $('.card-front').removeClass('selected');
                 } else if ($(this).hasClass('flip')) {
                     game.selectedRightCard.push($(this).data('cardValue'));
@@ -90,10 +95,9 @@ $(document).ready(function() {
                     game.selectedRightCard = [];
                     game.selectedRightCard.push($('.flip').data('cardValue'));
                     console.log(game.selectedRightCard);
-                };
+                }
             game.checkMatch();
             });
-            
         },
 
         checkMatch: function() {
@@ -102,13 +106,37 @@ $(document).ready(function() {
                 $('.selected2').css("opacity", "0");
                 game.selectedRightCard = [];
                 game.selectedLeftCard = [];
+                // Add sound of effect of "Great" / "Well Done!"
+            } else if ((game.selectedLeftCard.length === 0) && (game.selectedRightCard.length > 0)) {
+                alert ('Please select card from left deck first!');
+                $('.right-card').removeClass('flip');
+                $('.card-front').removeClass('selected');
+                game.selectedRightCard = [];
             } else {
                 alert('Unlucky!');
                 $('.left-card').css("border","#000 1px solid").removeClass('selected2');
                 $('.right-card').removeClass('flip');
+                $('.card-front').removeClass('selected');
                 game.selectedRightCard = [];
                 game.selectedLeftCard = [];
-            };
+                game.decrementLife();
+            }
+        },
+
+        decrementLife: function() {
+            lives--;
+            livesRemaining.text(lives);
+            if (lives == 0) {
+                alert('You have failed this level. Click ok to try this level again!');
+                window.location.reload();
+                // $('.left-card').css("border","#000 1px solid").removeClass('selected2');
+                // $('.right-card').removeClass('flip');
+                // $('.card-front').removeClass('selected');
+                // $('.selected').parent().removeAttr('style');
+                // $('.selected2').removeAttr('style');
+            } else {
+                livesRemaining.text(lives);
+            }
         }
     };
     game.init();
