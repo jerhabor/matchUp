@@ -101,9 +101,9 @@ h6 {
     border: #000 2px solid;
     margin: 0px 10px;
     display: grid;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(2, auto);
     grid-gap: 1em;
-    background: skyblue;
+    background: lightslategrey;
 }
 
 .left-card {
@@ -150,7 +150,6 @@ h6 {
 }
 
 .card-back {
-    position: absolute;
     border: gold 1px solid;
     background-color: #000;
     backface-visibility: hidden;
