@@ -87,26 +87,18 @@ body {
     justify-content: center;
     border: #000 2px solid;
     margin: 0px 10px;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 1em;
     background: skyblue;
 }
 
 .left-card {
-    position: absolute;
-    display: inline-block;
-    height: 240px;
-    width: 180px;
-    border: #000 2px solid;
+    height: 100px;
+    width: 80px;
+    border: #000 1px solid;
     cursor: pointer;
-    margin: 0px auto;
-}
-
-.left-card > .card-front {
-    position: absolute;
     background-color: gold;
-    backface-visibility: hidden;
-    width: 100%;
-    height: 100%;
 }
 
 /* ----------------------------------------------------------------- Right Deck of Cards */
