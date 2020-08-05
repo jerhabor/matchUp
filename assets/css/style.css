@@ -88,7 +88,7 @@ body {
     border: #000 2px solid;
     margin: 0px 10px;
     display: grid;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(2, auto);
     grid-gap: 1em;
     background: skyblue;
 }
@@ -137,7 +137,6 @@ body {
 }
 
 .card-back {
-    position: absolute;
     background-color: #000;
     backface-visibility: hidden;
     width: 100%;
