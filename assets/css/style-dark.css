@@ -61,7 +61,7 @@ html {
 body {
     font-family: 'Bungee Inline', cursive;
     overflow: hidden;
-    background: url(/assets/images/darkTheme.jpg);
+    background-color: #070207;
 }
 
 h1,
