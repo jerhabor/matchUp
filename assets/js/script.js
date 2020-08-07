@@ -4,7 +4,7 @@ $(document).ready(function() {
     var secondsLeftDisplay = $('#seconds-left');
     var secondsLeft = $('#seconds-left').text();
     
-    console.log("Amound of seconds for this level: " + secondsLeft)
+    console.log("Amount of seconds for this level: " + secondsLeft)
     
     $('.right-card').addClass('flip');
 
@@ -184,7 +184,5 @@ $(document).ready(function() {
             console.log($("#stylesheet").attr("href"));
         } 
     });
-    window.localStorage.setItem('content', 'Test');
-$('#test').html(window.localStorage.getItem('content'));
     game.init();
 });
