@@ -109,7 +109,7 @@ body {
     border: #000 2px solid;
     margin: 0px 10px;
     display: grid;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(3, auto);
     grid-gap: 1em;
     background: skyblue;
 }
@@ -134,7 +134,7 @@ body {
     box-sizing: border-box;
     border: #000 2px solid;
     display: grid;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(3, auto);
     grid-gap: 1em;
     background: skyblue;
 }
