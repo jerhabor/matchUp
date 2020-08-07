@@ -4,7 +4,7 @@ $(document).ready(function() {
     var secondsLeftDisplay = $('#seconds-left');
     var secondsLeft = $('#seconds-left').text();
     
-    console.log(secondsLeft)
+    console.log("Amound of seconds for this level: " + secondsLeft)
     
     $('.right-card').addClass('flip');
 
@@ -31,9 +31,9 @@ $(document).ready(function() {
     var newLevel = $('#level');
 
     var game = {
-        allLeftDeck: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+        allLeftDeck: [1, 2, 3, 4, 5, 6, 7, 8, 9],
         leftDeck: [],
-        rightDeck: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+        rightDeck: [1, 2, 3, 4, 5, 6, 7, 8, 9],
         selectedLeftCard: [],
         selectedRightCard: [],
         
@@ -52,9 +52,8 @@ $(document).ready(function() {
             game.allLeftDeck[j] = game.allLeftDeck[random];
             game.allLeftDeck[random] = temp;
             }
-        console.log('Shuffled All Left Deck Array: ' + game.allLeftDeck);
         // game.leftDeck = [];
-        game.leftDeck.push(game.allLeftDeck[0], game.allLeftDeck[1], game.allLeftDeck[2], game.allLeftDeck[3]);
+        game.leftDeck.push(game.allLeftDeck[0], game.allLeftDeck[1], game.allLeftDeck[2]);
         game.assignLeftDeck();
         console.log('Shuffle Left Deck Array: ' + game.leftDeck);
         },
