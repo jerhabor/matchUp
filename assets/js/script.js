@@ -2,27 +2,11 @@ $(document).ready(function() {
     
     // Countdown timer!
     var secondsLeftDisplay = $('#seconds-left');
-    var secondsLeft = $('#seconds-left').text();
+    var secondsLeft = 12;
     
     console.log("Amount of seconds for this level: " + secondsLeft)
     
     $('.right-card').addClass('flip');
-
-    countdown = function() {
-        if (secondsLeft <= 1) {
-            $('#timer').css("display","none");
-            $('.right-card').removeClass('flip');
-            $('.right-card').removeClass('disabled');
-            $('.left-card').removeClass("no-display");
-        } else {
-        secondsLeft--;
-        secondsLeftDisplay.text(secondsLeft);
-        };
-    };
-
-    setInterval(countdown, 1000);
-
-        
 
     // Game Play!
     var lives = 3;
@@ -40,6 +24,37 @@ $(document).ready(function() {
         init: function() {
             game.shuffleLeft();
             game.shuffleRight();
+            game.reload(12);
+        },
+
+        reload: function(seconds) {
+            countdown = function() {
+                if (secondsLeft <= 1) {
+                    clearInterval(timer);
+                    $('#timer').css("display","none");
+                    $('.right-card').removeClass('flip');
+                    $('.left-card').removeClass("no-display");
+                    game.selectedRightCard = [];
+                    game.selectedLeftCard = [];
+                } else {
+                    secondsLeft--;
+                    secondsLeftDisplay.text(secondsLeft);
+                    $('.left-card').addClass("no-display");
+                };
+            };
+            
+            secondsLeft = seconds;
+            secondsLeftDisplay.text(secondsLeft);
+            $('#timer').css("display","block");
+            $('.right-card').addClass('flip');
+            $('.left-card').addClass('unmatched');
+            $('.right-card').removeAttr('style');
+            $('.left-card').removeAttr('style');
+            var timer = setInterval(countdown, 1000);
+
+            if ($('#timer').css("display","block")) {
+                $('.right-card').off('click');
+            };
         },
 
         shuffleLeft: function() { // Shuffles the left deck of cards
@@ -124,7 +139,7 @@ $(document).ready(function() {
                 game.selectedLeftCard = [];
                 game.checkWin();
                 // Remember to add sound effect of "Great" / "Well Done!"
-            } else if ((game.selectedLeftCard.length === 0) && (game.selectedRightCard.length !== -1)) {
+            } else if ((game.selectedLeftCard.length === 0) && (game.selectedRightCard.length >= 0)) {
                 alert ('Please select card from left deck first!');
                 $('.right-card').removeClass('flip');
                 $('.card-front').removeClass('selected');
@@ -147,7 +162,8 @@ $(document).ready(function() {
             livesRemaining.text(lives);
             if (lives == 0) {
                 alert('You have failed this level. Click ok to try this level again!');
-                window.location.reload();
+                // window.location.reload();
+                game.init();
             } else {
                 livesRemaining.text(lives);
             }
@@ -159,14 +175,14 @@ $(document).ready(function() {
                 newLevel.text(currentLevel); // Increments user's level by 1 after user has successfully matched the left-side cards to the right-side.
                 lives = 3;
                 countdown();
-                game.newGame();
+                game.reload(10);
             }   
         },
         newGame: function() {
         $('.right-card').removeAttr('style');
         $('.right-card').removeClass('flip');
         $('.left-card').removeAttr('style');
-        $('.left-card').addClass('unmatched')
+        $('.left-card').addClass('unmatched');
         game.selectedRightCard = [];
         game.selectedLeftCard = [];
         },
